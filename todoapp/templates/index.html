@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Welcome to Todo Pro </h2>
+<p>Add Your Task </p>
+<form action="" method="POST">
+    {% csrf_token %}
+    <label for="fname">Task name </label>
+    <input type="text" id="fname" name="new_task" required>
+    <label for="cars">Priority</label>
+    <select name="priority" id="priority">
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+    </select>
+    <input type="submit" value="Add">
+</form>
+<h3>Task List</h3>
+<div class="row">
+    <div class="col-md-3">
+    {% for task in tasks %}
+    <div class="card " >
+    <div class="card-body">
+    <h5>{{task.task_name}}</h5>
+    <p>{{task.priority}}</p>
+        <a href="{% url 'delete' task.id %}" class="btn btn-outline-info">Delete</a>
+    </div>
+    </div>
+    </div>
+
+    {% endfor %}
+    </div>
+
+{% endblock %}
+
+
+<!-- <td><a href="{% url 'delete' task.id %}" class="btn btn-outline-info">Delete</a></td>/ -->
