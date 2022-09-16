@@ -11,3 +11,10 @@ def home(request):
         task.save()
     return render(request,'index.html',{'tasks':tasks}) 
 
+def delete(request,pk):
+    task = TodoList.objects.get(id=pk)
+    if request.method == 'POST':
+        task.delete()
+        return redirect(home)
+    context = {'task"name':task.task_name}
+    return render(request,'delete.html',{"task_name":context})
