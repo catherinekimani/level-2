@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
-
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -33,6 +35,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'todoapp.apps.TodoappConfig',
     'bootstrap5',
+    'cloudinary',
     'django_static_fontawesome',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -84,6 +87,13 @@ DATABASES = {
         'PASSWORD':'kate',
     }
 }
+
+# adding config
+cloudinary.config( 
+    cloud_name = 'dagailqvw', 
+    api_key = '688767776175743', 
+    api_secret = 'lM8iQrrJpHntJ6aNB13VIV8EYAk' 
+)
 
 
 # Password validation
